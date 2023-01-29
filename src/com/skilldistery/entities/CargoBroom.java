@@ -9,7 +9,7 @@ public class CargoBroom extends Jet implements CargoCarrier{
 	}
 
 	public void loadCargo() {
-
+		System.out.println("Loading Broom " + this.getModel());
 
 	}
 
@@ -17,10 +17,6 @@ public class CargoBroom extends Jet implements CargoCarrier{
 	
 
 	}
-	@Override
-	public void loadCago() {
-		// TODO Auto-generated method stub
-		
-	}
+	
 
 }

@@ -8,9 +8,7 @@ public class FighterBroom extends Jet implements CombatReady{
 	public FighterBroom(String model, double speed, int range, long price ) {
 		super(model, speed, range, price);
 	}
-	public void Fight() {
-		
-	}
+	
 
 	@Override
 	public void fly() {
@@ -20,6 +18,6 @@ public class FighterBroom extends Jet implements CombatReady{
 
 	@Override
 	public void fight() {
-		System.out.println(" Ready for combat");
+		System.out.println(" Ready for combat" + this.getModel());
 	}
 }

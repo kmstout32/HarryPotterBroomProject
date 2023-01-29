@@ -1,4 +1,5 @@
 package com.skilldistery.app;
+
 import java.util.Scanner;
 
 import com.skilldistery.entities.Airfield;
@@ -17,33 +18,34 @@ public class JetsApp {
 		airf = new Airfield();
 		displayUserMenu();
 		userInput(sc);
+
 	}
+
 	public void displayUserMenu() {
 		System.out.println("--------------------------------------------");
-		System.out.println("  Welcome to Ollivander's Broom Jet Museum  ");
+		System.out.println(" Welcome to Diagon Alley's Broom Jet Museum ");
 		System.out.println("    Choose from the following Menu Items:   ");
-		System.out.println("------------------------------------");
-		System.out.println("1) List Fleet of Broom Jets\t   |"
-						+ "\n2) Fly all Broom Jets\t\t   |"
-						+ "\n3) View Broom with the Fastest Jet |"
-						+ "\n4) View Broom with Longest Range   |"
-						+ "\n5) Load all Cargo Broom\t\t   |"
-						+ "\n6) DogFight!\t\t\t   |"
-						+ "\n7) Add Broom to Fleet\t\t   |"
-						+ "\n8) Remove Boom from Fleet\t   |"
-						+ "\n9) Quit\t\t\t\t   |");
-		System.out.println("------------------------------------");
-		
+		System.out.println("************************************");
+		System.out.println("1) List Fleet of Broom Jets\t   |" + "\n2) Fly all Broom Jets\t\t   |"
+				+ "\n3) View Broom with the Fastest Jet |" + "\n4) View Broom with Longest Range   |"
+				+ "\n5) Load all Cargo Broom\t\t   |" + "\n6) DogFight!\t\t\t   |" + "\n7) Add Broom to Fleet\t\t   |"
+				+ "\n8) Remove Boom from Fleet\t   |" + "\n9) Quit\t\t\t\t   |");
+		System.out.println("************************************");
+		System.out.println("Enter your choice here: ");
+
 	}
+
 	public void userInput(Scanner sc) {
+		int choice = sc.nextInt();
+		do {
 		
-			int choice = sc.nextInt();
+		
 			switch(choice) {
 		case 1:
-			airf.listAllJets();
+			airf.listAllBrooms();
 			break;
 		case 2:
-			airf.flyAllJets();
+			airf.flyAllBrooms();
 			break;
 		case 3:
 			airf.displayFastestJet();
@@ -52,18 +54,26 @@ public class JetsApp {
 			airf.longestRange();
 			break;
 		case 5:
+			airf.loadBroom();
 			break;
 		case 6:
+			airf.dogFight();
 			break;
 		case 7: 
+			airf.addBroomToFleet();
 			break;
 		case 8:
+			airf.removeBroomFromList();
 			break;
+		case 9:
+			System.out.println("Byeeeeeee!");
+			if (choice == 9) {
+				break;
 			}
-		
-	
+			
+		}
+		}while (choice==11);
+	sc.close();
 	}
+	
 }
-	
-	
-

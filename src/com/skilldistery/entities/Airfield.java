@@ -5,51 +5,78 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 import com.skilldistery.app.JetsApp;
 
 public class Airfield {
 	private List<Jet> jets;
+	private CargoBroom carg;
+	Scanner sc = new Scanner(System.in);
 
 	public void displayFastestJet() {
 		Jet fastestJet = jets.get(0);
-		for(int i = 0; i < jets.size(); i++) {
-			if(jets.get(i).getSpeed()> fastestJet.getSpeed()) {
+		for (int i = 0; i < jets.size(); i++) {
+			if (jets.get(i).getSpeed() > fastestJet.getSpeed()) {
 				fastestJet = jets.get(i);
 			}
 		}
 		System.out.println("fastest jet :" + fastestJet);
-		
 	}
-
-	public void listAllJets() {
+	public void addBroomToFleet() {
+		String modelEntered;
+		double speedEntered;
+		int rangeEntered;
+		long priceEntered;
+		
+		System.out.println("System Loading.....");
+		System.out.println("Enter model of your broom: ");
+		modelEntered = sc.nextLine();
+		System.out.println("Enter speed of your broom: ");
+		speedEntered = sc.nextDouble();
+		System.out.println("Enter range of your broom: ");
+		rangeEntered = sc.nextInt();
+		System.out.println("Enter price of your broom: ");
+		priceEntered = sc.nextLong();
+		Jet UserBroom = new JetImpl(modelEntered, speedEntered, rangeEntered, priceEntered);
+		jets.add(UserBroom);
+	
+	
+	}
+	public void removeBroomFromList() {
+		String modelRemoved;
+		boolean broom = false;
+		System.out.println("System loading broom removal...");
+	}
+// This method retrieves the list off all brooms
+	public void listAllBrooms() {
 		for (Jet jet : jets) {
 			System.out.println(jet);
 		}
 	}
 
-	public void flyAllJets() {
+// This method flies all brooms
+	public void flyAllBrooms() {
 		for (Jet jet : jets) {
 			System.out.println(jet.getModel() + " taking off in 3...2..1..");
 		}
 	}
-
+//This method iterates though this arraylist to find the broom with the longest flying range.
 	public void longestRange() {
 		Jet longestRange = jets.get(0);
-		for(int i = 0; i < jets.size(); i++) {
-			if(jets.get(i).getRange()> longestRange.getRange()) {
+		for (int i = 0; i < jets.size(); i++) {
+			if (jets.get(i).getRange() > longestRange.getRange()) {
 				longestRange = jets.get(i);
 			}
 		}
-		System.out.println("The jet with the longest range of flytime :\n"
-				+ " " + longestRange);
-		
+		System.out.println("The jet with the longest range of flytime :\n" + " " + longestRange);
+
 	}
 
 	public Airfield() {
 		this.jets = readListOfJet("jets.txt");
 	}
-
+//This method reads the text file and adds it into the list array
 	public List<Jet> readListOfJet(String fileName) {
 		List<Jet> jets = new ArrayList<>();
 		// read list into file
@@ -81,9 +108,23 @@ public class Airfield {
 		}
 		return jets;
 	}
-
+//This method loads all cargo broom (Starting point with one cargo broom)
 	public void loadBroom() {
-
+		for (Jet jet : jets) {
+			if (jet instanceof CargoCarrier) {
+				((CargoCarrier) jet).loadCargo();
+				break;
+			}
+		}
+	}
+//This method calls all the fighter brooms
+	public void dogFight() {
+		for (Jet jet : jets) {
+			if (jet instanceof CombatReady) {
+				((CombatReady) jet).fight();
+				break;
+			}
+		}
 	}
 
 	public List<Jet> getJets() {

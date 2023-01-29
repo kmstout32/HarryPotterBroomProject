@@ -20,7 +20,7 @@ public abstract class Jet  {
 	public abstract void fly();
 	@Override
 	public String toString() {
-		return "Broom [model=" + model + ", speed=" + speed + ", range=" + range + ", price=" + price + "]";
+		return "Model: " + model + ", Speed: " + speed + ", Range: " + range + ", Price: " + price;
 	}
 	public String getSpeedInMach() {
 //		this.speedInMach = speed * 0.001349;
