@@ -64,7 +64,7 @@ public class JetsApp {
 			airf.addBroomToFleet();
 			break;
 		case 8:
-			airf.removeBroomFromList();
+//			airf.removeBroomFromList();
 			break;
 		case 9:
 			System.out.println("Byeeeeeee!");

@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 
@@ -43,11 +44,17 @@ public class Airfield {
 	
 	
 	}
-	public void removeBroomFromList() {
-		String modelRemoved;
-		boolean broom = false;
-		System.out.println("System loading broom removal...");
-	}
+//	public void removeBroomFromList(Scanner sc) {
+//		String modelRemoved;
+//		boolean broom = false;
+//		System.out.println("System loading broom removal...");
+//		System.out.println("Type in the name of the broom you would like to remove");
+//		for (Jet removeBrm: jets) {
+//			System.out.println(removeBrm.getModel());
+//		}
+//		modelRemoved = sc.next();
+//		I
+//	}
 // This method retrieves the list off all brooms
 	public void listAllBrooms() {
 		for (Jet jet : jets) {
