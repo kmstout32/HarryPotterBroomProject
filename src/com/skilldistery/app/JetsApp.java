@@ -14,11 +14,13 @@ public class JetsApp {
 	}
 
 	public void launch() {
+		boolean isTrue = true;
 		Scanner sc = new Scanner(System.in);
 		airf = new Airfield();
-		displayUserMenu();
-		userInput(sc);
-
+		while (isTrue) {
+			isTrue = userInput(sc);
+		}
+		sc.close();
 	}
 
 	public void displayUserMenu() {
@@ -35,12 +37,11 @@ public class JetsApp {
 
 	}
 
-	public void userInput(Scanner sc) {
+	public boolean userInput(Scanner sc) {
+		displayUserMenu();
 		int choice = sc.nextInt();
-		do {
-		
-		
-			switch(choice) {
+
+		switch (choice) {
 		case 1:
 			airf.listAllBrooms();
 			break;
@@ -59,7 +60,7 @@ public class JetsApp {
 		case 6:
 			airf.dogFight();
 			break;
-		case 7: 
+		case 7:
 			airf.addBroomToFleet();
 			break;
 		case 8:
@@ -67,13 +68,13 @@ public class JetsApp {
 			break;
 		case 9:
 			System.out.println("Byeeeeeee!");
-			if (choice == 9) {
-				break;
+			return false;
+		default:
+			if (choice < 1 || choice > 9) {
+				System.out.println("That's not an option. Try again!");
 			}
-			
+			break;
 		}
-		}while (choice==11);
-	sc.close();
+		return true;
 	}
-	
 }
