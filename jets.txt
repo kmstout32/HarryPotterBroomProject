@@ -1,0 +1,5 @@
+FighterBroom,Firebolt,159,7900,54000
+QuidditchBroom,Nimbus2000,150,7879,32500
+PassengerBroom,Bluebottle,142,5200,21600
+CargoBroom,Shooting Star,100,4710,15300
+FighterBroom,Nimbus2001,161,3700,13750
