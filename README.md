@@ -9,4 +9,4 @@ Behind the scenes of the program, the text.file is thrown into an arrayList via 
 Java, Eclipse
 
 # Lessons Learned 
-This program has taught me how to properly add and remove items to a text.file. T
+This program has taught me how to properly add and remove items to a text.file. I initially had issues properly reading the file into the program, until I realized I needed to use if statements for the program to figure out where each jet belongs. I also learned how to properly put a method call inside of a while loop, which I had originally thought that a while loop was only used within a method. Overall, I had fun throughout the creation of the program, as I was able to use a little bit of creativity. I will definitely be making attempts to enhance the prrogram for the users to interact with it more.
