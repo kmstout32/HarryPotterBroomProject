@@ -25,13 +25,14 @@ public class JetsApp {
 
 	public void displayUserMenu() {
 		System.out.println("--------------------------------------------");
-		System.out.println(" Welcome to Diagon Alley's Broom Jet Museum ");
+		System.out.println("Welcome to Diagon Alley's Broom Airfield Show ");
 		System.out.println("    Choose from the following Menu Items:   ");
 		System.out.println("************************************");
 		System.out.println("1) List Fleet of Broom Jets\t   |" + "\n2) Fly all Broom Jets\t\t   |"
 				+ "\n3) View Broom with the Fastest Jet |" + "\n4) View Broom with Longest Range   |"
 				+ "\n5) Load all Cargo Broom\t\t   |" + "\n6) DogFight!\t\t\t   |" + "\n7) Add Broom to Fleet\t\t   |"
-				+ "\n8) Remove Boom from Fleet\t   |" + "\n9) Quit\t\t\t\t   |");
+				+ "\n8) Remove Boom from Fleet\t   |" + "\n10) Send of Quidditch Player\t   |" +
+				"\n10) Quit\t\t\t   |");
 		System.out.println("************************************");
 		System.out.println("Enter your choice here: ");
 
@@ -64,13 +65,16 @@ public class JetsApp {
 			airf.addBroomToFleet();
 			break;
 		case 8:
-//			airf.removeBroomFromList();
+			airf.removeBroomFromList();
 			break;
 		case 9:
-			System.out.println("Byeeeeeee!");
+			airf.removeBroomFromList();
+			break;
+		case 10:
+			System.out.println("See ya later, ole' champ! Tell Harry Potter, I siad hi!");
 			return false;
 		default:
-			if (choice < 1 || choice > 9) {
+			if (choice < 1 || choice > 10) {
 				System.out.println("That's not an option. Try again!");
 			}
 			break;

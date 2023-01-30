@@ -4,15 +4,11 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 
-import com.skilldistery.app.JetsApp;
-
 public class Airfield {
 	private List<Jet> jets;
-	private CargoBroom carg;
 	Scanner sc = new Scanner(System.in);
 
 	public void displayFastestJet() {
@@ -24,13 +20,17 @@ public class Airfield {
 		}
 		System.out.println("fastest jet :" + fastestJet);
 	}
+
 	public void addBroomToFleet() {
+		String nameEntered;
 		String modelEntered;
 		double speedEntered;
 		int rangeEntered;
 		long priceEntered;
-		
-		System.out.println("System Loading.....");
+
+		System.out.println("............................");
+		System.out.println("Enter name of your broom: ");
+		nameEntered = sc.nextLine();
 		System.out.println("Enter model of your broom: ");
 		modelEntered = sc.nextLine();
 		System.out.println("Enter speed of your broom: ");
@@ -39,26 +39,31 @@ public class Airfield {
 		rangeEntered = sc.nextInt();
 		System.out.println("Enter price of your broom: ");
 		priceEntered = sc.nextLong();
-		Jet UserBroom = new JetImpl(modelEntered, speedEntered, rangeEntered, priceEntered);
+		Jet UserBroom = new JetImpl(nameEntered, modelEntered, speedEntered, rangeEntered, priceEntered);
 		jets.add(UserBroom);
-	
-	
+		System.out.println("Broom added to list successfuly!");
+		System.out.println("View list to see your broom in list");
+		System.out.println("------------------------------------");
+
 	}
-//	public void removeBroomFromList(Scanner sc) {
-//		String modelRemoved;
-//		boolean broom = false;
-//		System.out.println("System loading broom removal...");
-//		System.out.println("Type in the name of the broom you would like to remove");
-//		for (Jet removeBrm: jets) {
-//			System.out.println(removeBrm.getModel());
-//		}
-//		modelRemoved = sc.next();
-//		I
-//	}
+
+	public void removeBroomFromList() {
+		System.out.println("System loading broom removal...");
+		System.out.println("Type in the name of the broom you would like to remove");
+		for (Jet jet : jets) {
+			int index = jets.indexOf(jet);
+			System.out.println(index + ": " + jet.getModel());
+		}
+		int choice = sc.nextInt();
+		jets.remove(choice);
+
+	}
+
 // This method retrieves the list off all brooms
 	public void listAllBrooms() {
 		for (Jet jet : jets) {
 			System.out.println(jet);
+			System.out.println(" ");
 		}
 	}
 
@@ -66,8 +71,10 @@ public class Airfield {
 	public void flyAllBrooms() {
 		for (Jet jet : jets) {
 			System.out.println(jet.getModel() + " taking off in 3...2..1..");
+			System.out.println(" ");
 		}
 	}
+
 //This method iterates though this arraylist to find the broom with the longest flying range.
 	public void longestRange() {
 		Jet longestRange = jets.get(0);
@@ -83,6 +90,7 @@ public class Airfield {
 	public Airfield() {
 		this.jets = readListOfJet("jets.txt");
 	}
+
 //This method reads the text file and adds it into the list array
 	public List<Jet> readListOfJet(String fileName) {
 		List<Jet> jets = new ArrayList<>();
@@ -99,13 +107,13 @@ public class Airfield {
 				long price = Long.parseLong(jetsRecord[4]);
 				// if - figure out where each jet belongs
 				if (name.equalsIgnoreCase("FighterBroom")) {
-					jet = new FighterBroom(model, speed, range, price);
+					jet = new FighterBroom(name,  model, speed, range, price);
 				} else if (name.equalsIgnoreCase("PassengerBroom")) {
-					jet = new PassengerBroom(model, speed, range, price);
+					jet = new PassengerBroom(name, model, speed, range, price);
 				} else if (name.equalsIgnoreCase("CargoBroom")) {
-					jet = new CargoBroom(model, speed, range, price);
+					jet = new CargoBroom(name, model, speed, range, price);
 				} else if (name.equalsIgnoreCase("QuidditchBroom")) {
-					jet = new QuidditchBroom(model, speed, range, price);
+					jet = new QuidditchBroom(name, model, speed, range, price);
 				}
 
 				jets.add(jet);
@@ -115,6 +123,7 @@ public class Airfield {
 		}
 		return jets;
 	}
+
 //This method loads all cargo broom (Starting point with one cargo broom)
 	public void loadBroom() {
 		for (Jet jet : jets) {
@@ -124,6 +133,15 @@ public class Airfield {
 			}
 		}
 	}
+	public void playQuidditch() {
+		for (Jet jet : jets) {
+			if (jet instanceof playQuid) {
+				((CargoCarrier) jet).loadCargo();
+				break;
+			}
+		}
+	}
+
 //This method calls all the fighter brooms
 	public void dogFight() {
 		for (Jet jet : jets) {
